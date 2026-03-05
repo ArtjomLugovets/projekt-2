@@ -64,7 +64,10 @@ userBtn.addEventListener("click", function() {
   whoareyou();
 });
 
-button.addEventListener("click", sendMessage);
+button.addEventListener("click", function() {
+  sendMessage();
+  getMessages();
+});
 
 async function deleteAll() {
 
