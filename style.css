@@ -9,7 +9,7 @@ h1 {
 }
 
 p {
-	background-color: aquamarine;
+	background-color: lightpink;
 	padding: 10px;
 }
 
@@ -30,4 +30,14 @@ h1 {
 	font-weight: 700;
 	font-style: normal;
 	font-size: 75px;
+}
+
+#secret {
+	position: fixed;
+	top: 10px;
+	right: 10px;
+	width: 30px;
+	height: 30px;
+	border: none;
+	background: transparent;
 }

@@ -54,8 +54,10 @@ async function sendMessage() {
 };
 
 function whoareyou() {
-  userBtn.outerHTML = `<p2>Your username: ${username}</p2>`;
-}
+  if (username) {
+    userBtn.outerHTML = `<p2>Your username: ${username}</p2>`;
+  };
+};
 
 userBtn.addEventListener("click", function() {
   setUsername();
@@ -63,4 +65,22 @@ userBtn.addEventListener("click", function() {
 });
 
 button.addEventListener("click", sendMessage);
+
+async function deleteAll() {
+
+  const response = await fetch("https://tinkr.tech/sdb/myprojekt2");
+  const data = await response.json();
+
+  for (const item of data) {
+
+    await fetch(`https://tinkr.tech/sdb/myprojekt2/${item.id}`, {
+      method: "DELETE"
+    });
+
+  };
+};
+const secr = document.querySelector("#secret");
+secr.addEventListener("click", deleteAll)
+
+
 getMessages();
