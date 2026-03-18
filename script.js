@@ -1,10 +1,8 @@
-
-
-
 const button = document.querySelector("#click");
 const input = document.querySelector("#messageInput");
 const messages = document.querySelector("#messageList");
 const userBtn = document.querySelector("#user");
+const user = document.querySelector("#userName");
 
 let username = "";
 
@@ -20,6 +18,7 @@ async function getMessages() {
 
   data.forEach(msg => {
     const p = document.createElement("p");
+    p.classList.add("messages");
     p.innerHTML = `${msg.username}: <br> ${msg.message}`;
     messages.prepend(p);
   });
@@ -55,7 +54,8 @@ async function sendMessage() {
 
 function whoareyou() {
   if (username) {
-    userBtn.outerHTML = `<p2>Your username: ${username}</p2>`;
+    user.innerHTML = `<p2>Your username: ${username}</p2>`;
+    userBtn.textContent = `Change your name`;
   };
 };
 
@@ -64,10 +64,7 @@ userBtn.addEventListener("click", function() {
   whoareyou();
 });
 
-button.addEventListener("click", function() {
-  sendMessage();
-  getMessages();
-});
+button.addEventListener("click", sendMessage);
 
 async function deleteAll() {
 
@@ -87,3 +84,4 @@ secr.addEventListener("click", deleteAll)
 
 
 getMessages();
+setInterval(getMessages, 2000);
